@@ -7,6 +7,7 @@ public class Interaction : MonoBehaviour {
 
     int layerMask;
     Rigidbody2D rb2D;
+    public bool trashed;
 
     // Use this for initialization
     void Start () {
@@ -23,10 +24,8 @@ public class Interaction : MonoBehaviour {
 
             if (hit.collider != null)
             {
-                // if (hit.collider.tag == "Interactable")
-                // {
                 Debug.Log("Did Hit" + hit.collider.gameObject.name);
-                // }
+                trashed = true;
             }
         }
        
