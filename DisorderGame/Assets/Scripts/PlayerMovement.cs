@@ -9,23 +9,33 @@ public class PlayerMovement : MonoBehaviour {
     float vertical;
     float moveLimiter = 0.7f;
     public float runSpeed = 20;
+    public float turnSpeed = 1;
 
 	
 	void Start () {
 
         body = GetComponent<Rigidbody2D>();
-
+        //body.freezeRotation = true;
 	}
 	
 	void Update () {
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+        
 
 	}
 
     void FixedUpdate ()
     {
+
+        Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
+        body.AddForce(moveVec);
+
+        if(moveVec != Vector2.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward, moveVec), Time.fixedDeltaTime * turnSpeed);
+        }
 
         if(horizontal != 0 && vertical != 0)
         {
