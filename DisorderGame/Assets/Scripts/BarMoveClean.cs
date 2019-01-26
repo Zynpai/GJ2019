@@ -11,8 +11,8 @@ public class BarMoveClean : MonoBehaviour {
     bool finished = false;
     float distance;
     public int ScoreScale;
-    public float barSpeed = 10.0f;
-    float vol = 1f;
+    public float barSpeed = 1.0f;
+    float vol = 1.0f;
     public AudioClip success;
     AudioSource source;
 
@@ -45,14 +45,18 @@ public class BarMoveClean : MonoBehaviour {
                 {
                     ScoreScale = 3;
                     source.PlayOneShot(success, vol);
+                    barSpeed = barSpeed + 0.3f;
+
                 }
                 else if (distance < 1f && distance > -1f)
                 {
                     ScoreScale = 2;
+                    barSpeed = 1.0f;
                 }
                 else
                 {
                     ScoreScale = 1;
+                    barSpeed = 1.0f;
                 }
                 GameObject.Find("PlayerClean").GetComponent<CleanInteraction>().SliderDisable();
                 cdavailable = false;
