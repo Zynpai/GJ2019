@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectTrashed : MonoBehaviour {
-
-    bool isTrash;
+    public bool isTrash;
+    public bool isClean;
     private SpriteRenderer spriteRenderer;
 
     private Sprite sprite1;
@@ -13,16 +13,18 @@ public class ObjectTrashed : MonoBehaviour {
     void Start () {
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        GameObject player = GameObject.Find("Player");
-        Interaction interaction = player.GetComponent<Interaction>();
-        bool isTrash = interaction.trashed;
+        sprite1 = Resources.Load<Sprite>("green");
+        sprite2 = Resources.Load<Sprite>("blue");
     }
 	
 	void Update () {
-		if(isTrash == true)
+        if (isTrash == true)
         {
-            spriteRenderer.sprite = green;
+            spriteRenderer.sprite = sprite1;          
+        }
+        if(isClean == true)
+        {
+            spriteRenderer.sprite = sprite2;
         }
 	}
 }

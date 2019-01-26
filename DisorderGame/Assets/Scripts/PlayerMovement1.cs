@@ -2,29 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement1 : MonoBehaviour {
 
     Rigidbody2D body;
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
     public float runSpeed = 20;
-    public float turnSpeed = 1;
+    public float turnSpeed = 20;
 
 	
 	void Start () {
 
         body = GetComponent<Rigidbody2D>();
-        //body.freezeRotation = true;
+
 	}
 	
 	void Update () {
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        
 
-	}
+        Vector3 pos = transform.position;
+
+    }
 
     void FixedUpdate ()
     {
