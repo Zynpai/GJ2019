@@ -28,8 +28,11 @@ public class TrashInteraction : MonoBehaviour {
 
             if (hit.collider != null)
             {
-                SliderEnable();
-                hitname = hit.collider.gameObject.name;
+                if (hit.collider.GetComponent<ObjectTrashed>().isTrash == false)
+                {
+                    SliderEnable();
+                    hitname = hit.collider.gameObject.name;
+                }
             }
         }
        

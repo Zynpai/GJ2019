@@ -32,9 +32,12 @@ public class CleanInteraction : MonoBehaviour
 
             if (hit.collider != null)
             {
-                SliderEnable();
-                Debug.Log("hit");
-                hitname = hit.collider.gameObject.name;
+                if (hit.collider.GetComponent<ObjectTrashed>().isTrash == true)
+                {
+                    SliderEnable();
+                    Debug.Log("hit");
+                    hitname = hit.collider.gameObject.name;
+                }
             }
         }
 
