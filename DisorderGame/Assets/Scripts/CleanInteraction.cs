@@ -12,6 +12,7 @@ public class CleanInteraction : MonoBehaviour
     public SpriteRenderer barCleanRender;
     string hitname;
     int Scorescale;
+    public int Scoremult = 1;
     private int Score;
     public Text Cleanertext;
     [SerializeField] private BarMoveClean barClean;
@@ -66,7 +67,7 @@ public class CleanInteraction : MonoBehaviour
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = true;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = false;
         Scorescale = GameObject.Find("BarClean").GetComponent<BarMoveClean>().ScoreScale;
-        Score = Score + Scorescale;
+        Score = Score + (Scorescale * Scoremult);
         Textupdate();
     }
     void Textupdate()

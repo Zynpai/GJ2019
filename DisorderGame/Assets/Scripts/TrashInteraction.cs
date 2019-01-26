@@ -11,6 +11,7 @@ public class TrashInteraction : MonoBehaviour {
     public SpriteRenderer barTrashRender;
     string hitname;
     int Scorescale;
+    public int Scoremult = 1;
     private int Score;
     public Text Trashscore;
     
@@ -63,7 +64,7 @@ public class TrashInteraction : MonoBehaviour {
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = true;
         Scorescale = GameObject.Find("BarTrash").GetComponent<BarMoveTrash>().ScoreScale;
-        Score = Score + Scorescale;
+        Score = Score + (Scorescale * Scoremult);
         Textupdate();
     }
 
