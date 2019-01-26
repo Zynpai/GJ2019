@@ -11,12 +11,14 @@ public class PlayerMovement2 : MonoBehaviour
     float moveLimiter = 0.7f;
     public float runSpeed = 20;
     public float turnSpeed = 20;
+    public bool InGame;
 
 
     void Start()
     {
 
         body = GetComponent<Rigidbody2D>();
+        InGame = false;
 
     }
 
@@ -32,22 +34,25 @@ public class PlayerMovement2 : MonoBehaviour
     void FixedUpdate()
     {
 
-        Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
-        body.AddForce(moveVec);
-
-        if (moveVec != Vector2.zero)
+        if (InGame == false)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward, moveVec), Time.fixedDeltaTime * turnSpeed);
-        }
+            Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
+            body.AddForce(moveVec);
 
-         if(horizontal != 0 && vertical != 0)
-         {
-             body.velocity = new Vector2((horizontal * runSpeed) * moveLimiter, (vertical * runSpeed) * moveLimiter);
-         }
-         else
-         {
-             body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
-         }
+            if (moveVec != Vector2.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward, moveVec), Time.fixedDeltaTime * turnSpeed);
+            }
+
+            if (horizontal != 0 && vertical != 0)
+            {
+                body.velocity = new Vector2((horizontal * runSpeed) * moveLimiter, (vertical * runSpeed) * moveLimiter);
+            }
+            else
+            {
+                body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+            }
+        }
 
     }
 }
