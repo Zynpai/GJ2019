@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - PlayerClean
+  - PlayerTrash
+  - PowerUp
   layers:
   - Default
   - TransparentFX

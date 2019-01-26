@@ -28,7 +28,5 @@ public class ObjectTrashed : MonoBehaviour {
         {
             spriteRenderer.sprite = sprite1;
         }
-
-        Debug.Log(isTrash);
 	}
 }

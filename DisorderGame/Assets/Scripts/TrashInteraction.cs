@@ -52,7 +52,6 @@ public class TrashInteraction : MonoBehaviour {
         sliderTrashRender.enabled = true;
         this.GetComponent<PlayerMovement1>().InGame = true;
         barTrash.enabled = true;
-        Debug.Log("enable slider");
     }
 
     public void SliderDisable()
@@ -63,7 +62,6 @@ public class TrashInteraction : MonoBehaviour {
         barTrash.enabled = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = true;
-        Debug.Log("disable slider");
         Scorescale = GameObject.Find("BarTrash").GetComponent<BarMoveTrash>().ScoreScale;
         Score = Score + Scorescale;
         Textupdate();

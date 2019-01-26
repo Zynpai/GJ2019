@@ -40,7 +40,6 @@ public class CleanInteraction : MonoBehaviour
                 if (hit.collider.GetComponent<ObjectTrashed>().isTrash == true)
                 {
                     SliderEnable();
-                    Debug.Log("hit");
                     hitname = hit.collider.gameObject.name;
                 }
             }
@@ -56,7 +55,6 @@ public class CleanInteraction : MonoBehaviour
         sliderCleanRender.enabled = true;
         this.GetComponent<PlayerMovement2>().InGame = true;
         barClean.enabled = true;
-        Debug.Log("enable slider");
     }
 
     public void SliderDisable()
@@ -67,7 +65,6 @@ public class CleanInteraction : MonoBehaviour
         barClean.enabled = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = true;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = false;
-        Debug.Log("disable slider");
         Scorescale = GameObject.Find("BarClean").GetComponent<BarMoveClean>().ScoreScale;
         Score = Score + Scorescale;
         Textupdate();
