@@ -81,7 +81,7 @@ MonoBehaviour:
   isTrash: 0
   isClean: 0
   CleanObj: Painting
-  TrashObj: PaintingEasterEgg
+  TrashObj: PaintingTrash
 --- !u!212 &212189761965583146
 SpriteRenderer:
   m_ObjectHideFlags: 1
