@@ -6,13 +6,11 @@ using UnityEngine.UI;
 public class TimerController : MonoBehaviour {
 
     public Text TimerText;
-    int min;
-    int sec;
+    public int min;
+    public int sec;
 
 	// Use this for initialization
 	void Start () {
-        min = 3;
-        sec = 0;
         TextUpdate();
 	}
 	

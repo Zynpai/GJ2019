@@ -468,6 +468,11 @@ Prefab:
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 200563900}
+    - target: {fileID: 114104639887671158, guid: 6de19393edd2220408a1127accb1970f,
+        type: 2}
+      propertyPath: min
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6de19393edd2220408a1127accb1970f, type: 2}
   m_IsPrefabAsset: 0
