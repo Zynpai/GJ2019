@@ -10,6 +10,7 @@ TagManager:
   - PowerUp
   - Walls
   - Misc
+  - Object
   layers:
   - Default
   - TransparentFX
