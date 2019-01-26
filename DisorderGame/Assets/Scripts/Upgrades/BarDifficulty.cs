@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public class NewBehaviourScript : MonoBehaviour
+public class BarDifficulty : MonoBehaviour
 {
 
 
@@ -15,7 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        difficult = false;
     }
 
     // Update is called once per frame
@@ -32,17 +32,21 @@ public class NewBehaviourScript : MonoBehaviour
         {
             if (col.CompareTag("PlayerTrash"))
             {
+                Debug.Log("trash");
                 colname = "Trasher";
-                col.GetComponent<BarMoveClean>().barMult = col.GetComponent<BarMoveClean>().barMult * 2.0f;
+                GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult = GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult * 2.0f;
+                GameObject.Find("BarClean").GetComponent<BarMoveClean>().barSpeed = GameObject.Find("BarClean").GetComponent<BarMoveClean>().barSpeed * 2.0f;
                 StartCoroutine(ShowText());
             }
             if (col.CompareTag("PlayerClean"))
             {
                 colname = "Cleaner";
-                col.GetComponent<BarMoveClean>().barMult = col.GetComponent<BarMoveClean>().barMult / 1.5f;
+                GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult = GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult / 1.5f;
+                GameObject.Find("BarClean").GetComponent<BarMoveClean>().barSpeed = GameObject.Find("BarClean").GetComponent<BarMoveClean>().barSpeed / 1.5f;
                 StartCoroutine(ShowText());
             }
             StartCoroutine(WaitTime());
+            Debug.Log("started wait");
             difficult = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
@@ -53,17 +57,20 @@ public class NewBehaviourScript : MonoBehaviour
         yield return new WaitForSeconds(20);
         if (colname == "Trasher")
         {
-            GameObject.Find("PlayerClean").GetComponent<BarMoveClean>().barMult = 1.0f;
+            GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult = 1.0f;
+            Destroy(gameObject);
         }
         if (colname == "Cleaner")
         {
-            GameObject.Find("PlayerClean").GetComponent<BarMoveClean>().barMult = 1.0f;
+            GameObject.Find("BarClean").GetComponent<BarMoveClean>().barMult = 1.0f;
+            Destroy(gameObject);
         }
     }
 
 
     IEnumerator ShowText()
     {
+        Debug.Log("show text");
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         diffText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
         diffText.text = "Bar Difficulty";
@@ -71,12 +78,13 @@ public class NewBehaviourScript : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Debug.Log("after coroutine");
         TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+        colorText.GetComponent<MeshRenderer>().enabled = true;
         colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
         Debug.Log(colorText.color);
         while (colorText.color.a > 0.0f)
         {
             Debug.Log("we here");
-            colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - (Time.deltaTime / fadetime));
+            colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.08f);
             yield return null;
         }
 
