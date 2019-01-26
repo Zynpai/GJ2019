@@ -7,19 +7,19 @@ public class CleanInteraction : MonoBehaviour
 {
 
     int layerMask;
-    public SpriteRenderer sliderRender;
-    public SpriteRenderer barRender;
-    public Transform slider;
-    public Transform bar;
+    public SpriteRenderer sliderCleanRender;
+    public SpriteRenderer barCleanRender;
+    string hitname;
+
+    [SerializeField] private BarMoveClean barClean;
 
     // Use this for initialization
     void Start()
     {
+       
         layerMask = LayerMask.GetMask("Interactable");
-        sliderRender = GameObject.Find("Slider").GetComponent<SpriteRenderer>();
-        barRender = GameObject.Find("Bar").GetComponent<SpriteRenderer>();
-        slider = this.gameObject.transform.GetChild(0);
-        bar = this.gameObject.transform.GetChild(1);
+        sliderCleanRender = GameObject.Find("SliderClean").GetComponent<SpriteRenderer>();
+        barCleanRender = GameObject.Find("BarClean").GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -33,8 +33,8 @@ public class CleanInteraction : MonoBehaviour
             if (hit.collider != null)
             {
                 SliderEnable();
-                hit.collider.GetComponent<ObjectTrashed>().isClean = true;
-                hit.collider.GetComponent<ObjectTrashed>().isTrash = false;
+                Debug.Log("hit");
+                hitname = hit.collider.gameObject.name;
             }
         }
 
@@ -42,11 +42,23 @@ public class CleanInteraction : MonoBehaviour
 
     void SliderEnable()
     {
-        slider.transform.position = transform.position;
-        //bar.transform.position = transform.position;
-        barRender.enabled = true;
-        sliderRender.enabled = true;
+        GameObject.Find("SliderClean").transform.position = transform.position;
+        GameObject.Find("BarClean").transform.position = transform.position;
+        barCleanRender.enabled = true;
+        sliderCleanRender.enabled = true;
         this.GetComponent<PlayerMovement2>().InGame = true;
-        GetComponentInChildren<BarMove>().enabled = true;
+        barClean.enabled = true;
+        Debug.Log("enable slider");
+    }
+
+    public void SliderDisable()
+    {
+        barCleanRender.enabled = false;
+        sliderCleanRender.enabled = false;
+        GameObject.Find("PlayerClean").GetComponent<PlayerMovement2>().InGame = false;
+        barClean.enabled = false;
+        GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = true;
+        GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = false;
+        Debug.Log("disable slider");
     }
 }
