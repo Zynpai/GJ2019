@@ -38,11 +38,11 @@ public class BarMoveClean : MonoBehaviour {
             if (cdavailable == true)
             {
                 distance = GameObject.Find("SliderClean").transform.position.x - transform.position.x;
-                if (distance < 0.1f && distance > -0.1f)
+                if (distance < 0.3f && distance > -0.3f)
                 {
                     ScoreScale = 3;
                 }
-                else if (distance < 0.5f && distance > -0.5f)
+                else if (distance < 1f && distance > -1f)
                 {
                     ScoreScale = 2;
                 }
