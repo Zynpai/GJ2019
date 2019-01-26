@@ -10,7 +10,7 @@ public class TrashInteraction : MonoBehaviour {
     public SpriteRenderer sliderTrashRender;
     public SpriteRenderer barTrashRender;
     string hitname;
-
+    int Scorescale;
     private int Score;
     public Text Trashscore;
     
@@ -64,7 +64,8 @@ public class TrashInteraction : MonoBehaviour {
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = true;
         Debug.Log("disable slider");
-        Score = Score + 1;
+        Scorescale = GameObject.Find("BarTrash").GetComponent<BarMoveTrash>().ScoreScale;
+        Score = Score + Scorescale;
         Textupdate();
     }
 

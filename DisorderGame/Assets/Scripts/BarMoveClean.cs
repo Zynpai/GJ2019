@@ -9,7 +9,8 @@ public class BarMoveClean : MonoBehaviour {
     Vector3 pointB;
     bool cdavailable = false;
     bool finished = false;
-
+    float distance;
+    public int ScoreScale;
     public float barSpeed = 10.0f;
 
     void start()
@@ -36,6 +37,19 @@ public class BarMoveClean : MonoBehaviour {
             finished = false;
             if (cdavailable == true)
             {
+                distance = GameObject.Find("SliderClean").transform.position.x - transform.position.x;
+                if (distance < 0.1f && distance > -0.1f)
+                {
+                    ScoreScale = 3;
+                }
+                else if (distance < 0.5f && distance > -0.5f)
+                {
+                    ScoreScale = 2;
+                }
+                else
+                {
+                    ScoreScale = 1;
+                }
                 GameObject.Find("PlayerClean").GetComponent<CleanInteraction>().SliderDisable();
                 cdavailable = false;
                 finished = true;

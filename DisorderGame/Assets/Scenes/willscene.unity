@@ -1826,7 +1826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06699e3af11c00f40b4d5b715d2782ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barSpeed: 2
+  ScoreScale: 0
+  barSpeed: 1
 --- !u!1 &811073917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,6 +2678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012cda50fb92494418e2da5a271dc905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreScale: 0
   barSpeed: 1
 --- !u!212 &989896805
 SpriteRenderer:

@@ -11,7 +11,7 @@ public class CleanInteraction : MonoBehaviour
     public SpriteRenderer sliderCleanRender;
     public SpriteRenderer barCleanRender;
     string hitname;
-
+    int Scorescale;
     private int Score;
     public Text Cleanertext;
     [SerializeField] private BarMoveClean barClean;
@@ -68,7 +68,8 @@ public class CleanInteraction : MonoBehaviour
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = true;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = false;
         Debug.Log("disable slider");
-        Score = Score + 1;
+        Scorescale = GameObject.Find("BarClean").GetComponent<BarMoveClean>().ScoreScale;
+        Score = Score + Scorescale;
         Textupdate();
     }
     void Textupdate()
