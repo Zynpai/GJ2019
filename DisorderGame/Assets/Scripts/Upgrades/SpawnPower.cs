@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SpawnPower : MonoBehaviour {
 
+    public GameObject Speed;
+    public GameObject Points;
+    public GameObject Bar;
+
     Vector3[] positionArray = new[]
     {
          new Vector3(1.93f, 9.09f, 0.0f),
@@ -31,18 +35,54 @@ public class SpawnPower : MonoBehaviour {
          new Vector3(18.28f, 2.52f, 0.0f),
          new Vector3(17.19f, 0.78f, 0.0f),
          new Vector3(16.04f, 2.61f, 0.0f),
-
 };
+
+    string[] powerArray = 
+    {
+        "Speed",
+       "Points",
+       "Bar",
+
+    };
    
 
 
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine(SpawnStuff());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+
+
 	}
+    
+    IEnumerator SpawnStuff()
+    {
+        float ranNum = Random.Range(15f, 30f);
+        yield return new WaitForSeconds(ranNum);
+        SpawnRandom();
+    }
+
+    void SpawnRandom()
+    {
+        int ranPos = Random.Range(0, 24);
+        string ranPow = powerArray[Random.Range(0, 2)];
+        if(ranPow == "Speed")
+        {
+            Instantiate(Speed, positionArray[ranPos], Quaternion.identity);
+        }
+        else if(ranPow == "Points")
+        {
+            Instantiate(Points, positionArray[ranPos], Quaternion.identity);
+        }
+        else if (ranPow == "Bar")
+        {
+            Instantiate(Bar, positionArray[ranPos], Quaternion.identity);
+        }
+
+        StartCoroutine(SpawnStuff());
+    }
 }
