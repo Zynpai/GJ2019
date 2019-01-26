@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class TrashInteraction : MonoBehaviour {
 
@@ -10,12 +11,17 @@ public class TrashInteraction : MonoBehaviour {
     public SpriteRenderer barTrashRender;
     string hitname;
 
+    private int Score;
+    public Text Trashscore;
+    
     [SerializeField] private BarMoveTrash barTrash;
     // Use this for initialization
     void Start () {
         layerMask = LayerMask.GetMask("Interactable");
         sliderTrashRender = GameObject.Find("SliderTrash").GetComponent<SpriteRenderer>();
         barTrashRender = GameObject.Find("BarTrash").GetComponent<SpriteRenderer>();
+        Score = 0;
+        Textupdate();
 
     }
 	
@@ -58,5 +64,13 @@ public class TrashInteraction : MonoBehaviour {
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = false;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = true;
         Debug.Log("disable slider");
+        Score = Score + 1;
+        Textupdate();
+    }
+
+
+    void Textupdate()
+    {
+        Trashscore.text = "Trasher Score: " + Score.ToString();
     }
 }
