@@ -46,8 +46,8 @@ public class TrashInteraction : MonoBehaviour {
 
     void SliderEnable()
     {
-        GameObject.Find("SliderTrash").transform.position = transform.position;
-        GameObject.Find("BarTrash").transform.position = transform.position;
+        GameObject.Find("SliderTrash").transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        GameObject.Find("BarTrash").transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         barTrashRender.enabled = true;
         sliderTrashRender.enabled = true;
         this.GetComponent<PlayerMovement1>().InGame = true;

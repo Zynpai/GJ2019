@@ -50,8 +50,8 @@ public class CleanInteraction : MonoBehaviour
 
     void SliderEnable()
     {
-        GameObject.Find("SliderClean").transform.position = transform.position;
-        GameObject.Find("BarClean").transform.position = transform.position;
+        GameObject.Find("SliderClean").transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+        GameObject.Find("BarClean").transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
         barCleanRender.enabled = true;
         sliderCleanRender.enabled = true;
         this.GetComponent<PlayerMovement2>().InGame = true;
