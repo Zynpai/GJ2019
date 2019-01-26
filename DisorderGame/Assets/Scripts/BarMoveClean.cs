@@ -46,7 +46,7 @@ public class BarMoveClean : MonoBehaviour {
                 {
                     ScoreScale = 3;
                     source.PlayOneShot(success, vol);
-                    barSpeed = (barSpeed + 0.3f) * barMult;
+                    barSpeed = barSpeed +(0.3f) * barMult;
 
                 }
                 else if (distance < 1f && distance > -1f)
