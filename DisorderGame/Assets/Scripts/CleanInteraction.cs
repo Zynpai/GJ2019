@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CleanInteraction : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class CleanInteraction : MonoBehaviour
     public SpriteRenderer sliderCleanRender;
     public SpriteRenderer barCleanRender;
     string hitname;
-
+    int Scorescale;
+    private int Score;
+    public Text Cleanertext;
     [SerializeField] private BarMoveClean barClean;
 
     // Use this for initialization
@@ -20,6 +23,8 @@ public class CleanInteraction : MonoBehaviour
         layerMask = LayerMask.GetMask("Interactable");
         sliderCleanRender = GameObject.Find("SliderClean").GetComponent<SpriteRenderer>();
         barCleanRender = GameObject.Find("BarClean").GetComponent<SpriteRenderer>();
+        Score = 0;
+        Textupdate();
     }
 
     // Update is called once per frame
@@ -63,5 +68,12 @@ public class CleanInteraction : MonoBehaviour
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isClean = true;
         GameObject.Find(hitname).GetComponent<ObjectTrashed>().isTrash = false;
         Debug.Log("disable slider");
+        Scorescale = GameObject.Find("BarClean").GetComponent<BarMoveClean>().ScoreScale;
+        Score = Score + Scorescale;
+        Textupdate();
+    }
+    void Textupdate()
+    {
+        Cleanertext.text = "Cleaner Score: " + Score.ToString();
     }
 }
