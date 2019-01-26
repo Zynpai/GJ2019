@@ -8,6 +8,8 @@ TagManager:
   - PlayerClean
   - PlayerTrash
   - PowerUp
+  - Walls
+  - Misc
   layers:
   - Default
   - TransparentFX
