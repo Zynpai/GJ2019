@@ -12,6 +12,7 @@ public class BarMoveTrash : MonoBehaviour
     float distance;
     public int ScoreScale;
     public float barSpeed = 1.0f;
+    public float barMult = 1.0f;
     float vol = 1.0f;
     public AudioClip success;
     AudioSource source;
@@ -45,17 +46,17 @@ public class BarMoveTrash : MonoBehaviour
                 {
                     ScoreScale = 3;
                     source.PlayOneShot(success,vol);
-                    barSpeed = barSpeed + 0.3f;
+                    barSpeed = (barSpeed + 0.3f) * barMult;
                 }
                 else if (distance < 1f && distance > -1f)
                 {
                     ScoreScale = 2;
-                    barSpeed = 1.0f;
+                    barSpeed = (1.0f) * barMult;
                 }
                 else
                 {
                     ScoreScale = 1;
-                    barSpeed = 1.0f;
+                    barSpeed = (1.0f) * barMult;
                 }
                
                 GameObject.Find("PlayerTrash").GetComponent<TrashInteraction>().SliderDisable();
