@@ -9,15 +9,15 @@ public class SpeedUpgrade : MonoBehaviour
 
     string colname;
     public TMP_Text speedText;
-    public float fadetime = 100f;
+    public float fadetime = 100000f;
     public GameObject speed;
     bool speedy;
+    TextMeshPro colorText;
 
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(WaitTime());
-      
+       colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -29,8 +29,10 @@ public class SpeedUpgrade : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (speedy == false)
-        { 
-        if (col.CompareTag("PlayerTrash"))
+        {
+            colorText.GetComponent<MeshRenderer>().enabled = true;
+            StartCoroutine(WaitTime());
+            if (col.CompareTag("PlayerTrash"))
         {
             colname = "Trasher";
             col.GetComponent<PlayerMovement1>().runSpeed = col.GetComponent<PlayerMovement1>().runSpeed * 2;
@@ -75,9 +77,10 @@ public class SpeedUpgrade : MonoBehaviour
         while(colorText.color.a > 0.0f)
         {
             Debug.Log("we here");
-            colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - (Time.deltaTime / fadetime));
+            colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.008f);
             yield return null;
         }
-
+        colorText.GetComponent<MeshRenderer>().enabled = false;
+        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
     }
 }
