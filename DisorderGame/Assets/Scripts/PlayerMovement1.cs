@@ -15,8 +15,9 @@ public class PlayerMovement1 : MonoBehaviour {
 	void Start () {
 
         body = GetComponent<Rigidbody2D>();
+        body.freezeRotation = true;
 
-	}
+    }
 	
 	void Update () {
 
@@ -29,7 +30,8 @@ public class PlayerMovement1 : MonoBehaviour {
 
     void FixedUpdate ()
     {
-        if (InGame == false)
+        //transform.rotation = Quaternion.identity;
+        if (InGame == false && !Input.GetKeyDown("a") && !Input.GetKeyDown("w") && !Input.GetKeyDown("s") && !Input.GetKeyDown("d"))
         {
             Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
             body.AddForce(moveVec);

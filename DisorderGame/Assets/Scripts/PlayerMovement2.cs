@@ -18,6 +18,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
 
         body = GetComponent<Rigidbody2D>();
+        body.freezeRotation = true;
         InGame = false;
 
     }
