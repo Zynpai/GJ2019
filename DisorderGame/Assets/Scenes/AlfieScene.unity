@@ -931,6 +931,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &493431132
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1009131952}
+    m_Modifications:
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.6289062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0f03193c9f5a174d9247101c5d288fd, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &509541130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,6 +1957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreScale: 0
   barSpeed: 1
+  success: {fileID: 0}
 --- !u!224 &779238004 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224041995834503584, guid: 548263322d4303b43a60d4be87f29216,
@@ -2772,6 +2815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreScale: 0
   barSpeed: 1
+  success: {fileID: 0}
 --- !u!212 &989896805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2857,6 +2901,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1351319005}
+  - {fileID: 1838517692}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2945,7 +2990,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -3304,6 +3349,16 @@ Prefab:
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 75688173}
+    - target: {fileID: 114355512908135178, guid: 60fcee58dd481374dad2b98a5bbaab7b,
+        type: 2}
+      propertyPath: min
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114355512908135178, guid: 60fcee58dd481374dad2b98a5bbaab7b,
+        type: 2}
+      propertyPath: sec
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60fcee58dd481374dad2b98a5bbaab7b, type: 2}
   m_IsPrefabAsset: 0
@@ -4310,7 +4365,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -4535,6 +4590,11 @@ MonoBehaviour:
   isClean: 0
   CleanObj: Bed
   TrashObj: BedTrash
+--- !u!4 &1838517692 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4248725820047202, guid: e0f03193c9f5a174d9247101c5d288fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 493431132}
 --- !u!1 &1855000797
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,6 +4627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 75688173}
+  min: 1
+  sec: 30
 --- !u!81 &1855000799
 AudioListener:
   m_ObjectHideFlags: 0
