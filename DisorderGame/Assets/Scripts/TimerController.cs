@@ -30,7 +30,7 @@ public class TimerController : MonoBehaviour {
             if (sec == 0 && min == 0)
             {
                 percent = CalcPercent();
-                Time.timeScale = 0;
+                
                 SceneManager.LoadScene("EndScreen");
             }
             else if (sec == 0)
