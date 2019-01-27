@@ -36,7 +36,7 @@ public class BarMoveClean : MonoBehaviour {
         float time = Mathf.PingPong(Time.time * barSpeed, 1);
         transform.position = Vector3.Lerp(pointA, pointB, time);
 
-        if(Input.GetKeyDown("enter"))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             finished = false;
             if (cdavailable == true)
