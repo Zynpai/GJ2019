@@ -17,9 +17,6 @@ public class PlayerMovement2 : MonoBehaviour
     AudioSource source;
     int layerMask;
     bool wall;
-    private Vector3 movementVector;
-    private CharacterController characterController;
-
 
     void Start()
     {
@@ -43,8 +40,8 @@ public class PlayerMovement2 : MonoBehaviour
     void FixedUpdate()
     {
 
-        horizontal = Input.GetAxisRaw("LeftJoyStick2X");
-        vertical = Input.GetAxisRaw("LeftJoyStick2Y");
+        horizontal = Input.GetAxisRaw("Horizontal2");
+        vertical = Input.GetAxisRaw("Vertical2");
 
       //  RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.5f, layerMask);
 

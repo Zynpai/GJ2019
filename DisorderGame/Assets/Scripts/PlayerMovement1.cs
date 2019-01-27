@@ -14,9 +14,6 @@ public class PlayerMovement1 : MonoBehaviour {
     public bool InGame = false;
     public AudioClip footstep;
     AudioSource source;
-    private Vector3 movementVector;
-    private CharacterController characterController;
-
 
     void Start () {
 
@@ -35,8 +32,8 @@ public class PlayerMovement1 : MonoBehaviour {
     void FixedUpdate ()
     {
 
-        horizontal = Input.GetAxisRaw("LeftJoyStickX");
-        vertical = Input.GetAxisRaw("LeftJoyStickY");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 pos = transform.position;
         if (InGame == false)
