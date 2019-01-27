@@ -12,15 +12,15 @@ public class EndScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        percent = TimerController.percent;
+        percent = TimerController.percent * 100f;
         trasher = TimerController.trasher;
         if (trasher)
         {
-            EndText.text = (percent * 100) + "% Room Trashed at end!";
+            EndText.text = percent.ToString() + "% Room Trashed at end!";
         }
         else
         {
-            EndText.text = (percent * 100) + "% Room Cleaned at end!";
+            EndText.text = percent.ToString() + "% Room Cleaned at end!";
         }
 
 
