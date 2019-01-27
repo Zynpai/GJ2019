@@ -23,6 +23,8 @@ public class PlayerMovement1 : MonoBehaviour {
         source.clip = footstep;
         source.loop = true;
         source.volume = 1.0f;
+
+       
     }
 	
 	void Update () {
@@ -31,11 +33,9 @@ public class PlayerMovement1 : MonoBehaviour {
 
     void FixedUpdate ()
     {
+        horizontal = Input.GetAxisRaw("TrashHorizontal");
+        vertical = Input.GetAxisRaw("TrashVertical");
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 pos = transform.position;
         if (InGame == false)
         {
             Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
@@ -60,13 +60,6 @@ public class PlayerMovement1 : MonoBehaviour {
             }
         }
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Walls")
-        {
-            Debug.Log("collidedwithwall");
-            body.velocity = Vector3.zero;
-        }
+        
     }
-}
+
