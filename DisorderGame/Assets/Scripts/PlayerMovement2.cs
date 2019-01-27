@@ -30,6 +30,8 @@ public class PlayerMovement2 : MonoBehaviour
         source.volume = 1.0f;
         layerMask = LayerMask.GetMask("Wall");
         wall = false;
+        
+
     }
 
     void Update()
@@ -40,22 +42,11 @@ public class PlayerMovement2 : MonoBehaviour
     void FixedUpdate()
     {
 
-        horizontal = Input.GetAxisRaw("Horizontal2");
-        vertical = Input.GetAxisRaw("Vertical2");
 
-      //  RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.5f, layerMask);
+        horizontal = Input.GetAxisRaw("CleanHorizontal");
+        vertical = Input.GetAxisRaw("CleanVertical");
 
-       // if (hit.collider != null)
-       // {
-           // runSpeed = runSpeed / 2;
-           // wall = true;
-       // }
-       // else
-       // {
-           // wall = false;
-      //  }
-
-        if (InGame == false && wall == false)
+        if (InGame == false)
         {
             Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
             body.AddForce(moveVec);
