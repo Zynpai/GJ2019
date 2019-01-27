@@ -8,7 +8,7 @@ public class SpawnPower : MonoBehaviour {
     public GameObject Points;
     public GameObject Bar;
     public GameObject Snap;
-    public static int Rate = 25;
+    public int Rate;
 
     Vector3[] positionArray = new[]
     {
@@ -53,6 +53,7 @@ public class SpawnPower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(SpawnStuff());
+        Rate = PlayerPrefs.GetInt("SpawnVal");
 	}
 	
 	// Update is called once per frame
@@ -63,14 +64,8 @@ public class SpawnPower : MonoBehaviour {
 	}
     
     IEnumerator SpawnStuff()
-    {
-        int Ratemin = Rate - 15;
-        if (Ratemin <= 0)
-        {
-            Ratemin = 1;
-        }
-        float ranNum = Random.Range(Ratemin, Rate);
-        yield return new WaitForSeconds(ranNum);
+    {          
+        yield return new WaitForSeconds(Rate);
         Debug.Log("Before Spawn");
         SpawnRandom();
     }

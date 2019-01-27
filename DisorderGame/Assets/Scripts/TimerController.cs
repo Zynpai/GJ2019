@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 public class TimerController : MonoBehaviour {
 
     public Text TimerText;
-    public static int min;
-    public static int sec;
+    public int min;
+    public int sec;
     public static float percent;
     public static bool trasher;
     // Use this for initialization
     void Start () {
         TextUpdate();
-        min = 1;
-        sec = 30;
+        min = PlayerPrefs.GetInt("MinutesVal");
+        sec = PlayerPrefs.GetInt("SecondsVal");
 	}
 	
 	// Update is called once per frame

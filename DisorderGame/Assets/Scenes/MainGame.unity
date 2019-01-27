@@ -7637,8 +7637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 75688173}
-  min: 1
-  sec: 30
 --- !u!81 &1855000799
 AudioListener:
   m_ObjectHideFlags: 0
