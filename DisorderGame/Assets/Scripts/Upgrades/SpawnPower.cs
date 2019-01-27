@@ -61,13 +61,15 @@ public class SpawnPower : MonoBehaviour {
     
     IEnumerator SpawnStuff()
     {
-        float ranNum = Random.Range(15f, 30f);
+        float ranNum = Random.Range(1f, 5f);
         yield return new WaitForSeconds(ranNum);
+        Debug.Log("Before Spawn");
         SpawnRandom();
     }
 
     void SpawnRandom()
     {
+        Debug.Log("On Spawn");
         int ranPos = Random.Range(0, 24);
         string ranPow = powerArray[Random.Range(0, 2)];
         if(ranPow == "Speed")
