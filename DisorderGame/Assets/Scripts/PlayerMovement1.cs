@@ -7,8 +7,9 @@ public class PlayerMovement1 : MonoBehaviour {
     Rigidbody2D body;
     float horizontal;
     float vertical;
-    float moveLimiter = 0.7f;
-    public float runSpeed = 20;
+    float moveLimiter = 0.4f;
+    public float runSpeed =
+        20;
     public float turnSpeed = 20;
     public bool InGame = false;
     public AudioClip footstep;
@@ -27,18 +28,16 @@ public class PlayerMovement1 : MonoBehaviour {
 	
 	void Update () {
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 pos = transform.position;
-
     }
 
     void FixedUpdate ()
     {
-        
-        //transform.rotation = Quaternion.identity;
-        if (InGame == false && !Input.GetKeyDown("a") && !Input.GetKeyDown("w") && !Input.GetKeyDown("s") && !Input.GetKeyDown("d"))
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 pos = transform.position;
+        if (InGame == false)
         {
             Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
             body.AddForce(moveVec);
@@ -60,6 +59,15 @@ public class PlayerMovement1 : MonoBehaviour {
                 body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
                 source.Stop();
             }
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Walls")
+        {
+            Debug.Log("collidedwithwall");
+            body.velocity = Vector3.zero;
         }
     }
 }

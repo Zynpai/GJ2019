@@ -49,7 +49,7 @@ public class TheSnap : MonoBehaviour {
             Debug.Log("before second foreach");
             foreach (GameObject g in FilteredList)
             {
-                int Decider = Random.Range(1, 3);
+                int Decider = Random.Range(1, 4);
                 if (Decider == 1)
                 {
                     Debug.Log("snapping something....?");
@@ -73,12 +73,12 @@ public class TheSnap : MonoBehaviour {
                 if (g.GetComponent<ObjectTrashed>().isTrash == false)
                 {
                     FilteredList[count] = g;
-                    count += 0;
+                    count += 1;
                 }
             }
             foreach (GameObject g in FilteredList)
             {
-               Decider =  Random.Range(1, 3);
+               Decider =  Random.Range(1, 4);
                 if (Decider == 1)
                 {
                     g.GetComponent<ObjectTrashed>().isClean = false;
