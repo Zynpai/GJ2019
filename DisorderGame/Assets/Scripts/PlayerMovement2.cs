@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement2 : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class PlayerMovement2 : MonoBehaviour
     public bool InGame;
     public AudioClip footstep;
     AudioSource source;
+    int layerMask;
+    bool wall;
+    private Vector3 movementVector;
+    private CharacterController characterController;
 
 
     void Start()
@@ -26,6 +31,8 @@ public class PlayerMovement2 : MonoBehaviour
         source.clip = footstep;
         source.loop = true;
         source.volume = 1.0f;
+        layerMask = LayerMask.GetMask("Wall");
+        wall = false;
     }
 
     void Update()
@@ -36,11 +43,22 @@ public class PlayerMovement2 : MonoBehaviour
     void FixedUpdate()
     {
 
-        horizontal = Input.GetAxisRaw("Horizontal2");
-        vertical = Input.GetAxisRaw("Vertical2");
-        Vector3 pos = transform.position;
+        horizontal = Input.GetAxisRaw("LeftJoyStick2X");
+        vertical = Input.GetAxisRaw("LeftJoyStick2Y");
 
-        if (InGame == false)
+      //  RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 0.5f, layerMask);
+
+       // if (hit.collider != null)
+       // {
+           // runSpeed = runSpeed / 2;
+           // wall = true;
+       // }
+       // else
+       // {
+           // wall = false;
+      //  }
+
+        if (InGame == false && wall == false)
         {
             Vector2 moveVec = new Vector2(horizontal, vertical) * runSpeed;
             body.AddForce(moveVec);

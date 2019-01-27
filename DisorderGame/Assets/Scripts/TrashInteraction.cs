@@ -29,7 +29,7 @@ public class TrashInteraction : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("joystick button 0") || Input.GetKeyDown("space"))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, layerMask);
 

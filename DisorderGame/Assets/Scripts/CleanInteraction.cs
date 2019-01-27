@@ -31,8 +31,8 @@ public class CleanInteraction : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        if (Input.GetKeyDown(KeyCode.Return))
+         
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown("joystick 2 button 0"))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, layerMask);
 

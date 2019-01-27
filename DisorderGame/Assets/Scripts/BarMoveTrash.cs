@@ -36,7 +36,7 @@ public class BarMoveTrash : MonoBehaviour
         float time = Mathf.PingPong(Time.time * barSpeed, 1);
         transform.position = Vector3.Lerp(pointA, pointB, time);
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") || Input.GetKeyDown("joystick button 0"))
         {
             finished = false;
             if (cdavailable == true)
