@@ -88,7 +88,7 @@ public class TheSnap : MonoBehaviour {
         Debug.Log("show text");
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         ScoreText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
-        ScoreText.text = "Balanced, as all things should be";
+        ScoreText.text = "Equalised, as all things could be";
         Debug.Log("before coroutine");
         yield return new WaitForSeconds(1f);
         Debug.Log("after coroutine");
