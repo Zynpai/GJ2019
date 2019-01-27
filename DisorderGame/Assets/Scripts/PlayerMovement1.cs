@@ -27,16 +27,14 @@ public class PlayerMovement1 : MonoBehaviour {
 	
 	void Update () {
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
-        Vector3 pos = transform.position;
-
     }
 
     void FixedUpdate ()
     {
-        
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 pos = transform.position;
         //transform.rotation = Quaternion.identity;
         if (InGame == false && !Input.GetKeyDown("a") && !Input.GetKeyDown("w") && !Input.GetKeyDown("s") && !Input.GetKeyDown("d"))
         {
