@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: 38c49abcd43068842a9c4ded87cb7669
-  - enabled: 1
-    path: Assets/Scenes/HiddenRoom.unity
-    guid: 802ad1a9da23ce44a8d1d23955a1749f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
