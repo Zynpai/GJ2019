@@ -20,6 +20,11 @@ public class TimerController : MonoBehaviour {
 	void Update () {
 		if (Time.frameCount%60 == 0)
         {
+            if(min == 0 && sec <= 10)
+            {
+               GameObject.Find("SecretRoom4").GetComponent<BoxCollider2D>().enabled = false;
+
+            }
             if (sec == 0 && min == 0)
             {
                 percent = CalcPercent();
