@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114993999395657332}
   m_Layer: 8
   m_Name: Drawer
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1363109111085668}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 7.3500004, y: 1.4650002, z: 0.6610613}
+  m_LocalPosition: {x: -10.03, y: 1.38, z: 0.6610613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,7 +54,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.02532196, y: 0.19282627}
+  m_Offset: {x: -0.022123337, y: 0.17698431}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0473824, y: 0.6943474}
+  m_Size: {x: 1.1550751, y: 0.7260313}
   m_EdgeRadius: 0
 --- !u!114 &114993999395657332
 MonoBehaviour:
