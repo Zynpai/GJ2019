@@ -14,11 +14,12 @@ public class TheSnap : MonoBehaviour {
     public float fadetime = 100f;
     GameObject[] List = new GameObject[50];
     GameObject[] FilteredList = new GameObject[50];
+    TextMeshPro colorText;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,6 +29,7 @@ public class TheSnap : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     {
         StartCoroutine(ShowText());
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         if (col.CompareTag("PlayerTrash"))
         {
             Debug.Log("trash");
@@ -45,7 +47,7 @@ public class TheSnap : MonoBehaviour {
             Debug.Log("before second foreach");
             foreach (GameObject g in FilteredList)
             {
-                Decider = Random.Range(1, 3);
+                int Decider = Random.Range(1, 3);
                 if (Decider == 1)
                 {
                     Debug.Log("snapping something....?");
@@ -77,7 +79,6 @@ public class TheSnap : MonoBehaviour {
             }
 
         }
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         
     }
 
@@ -85,23 +86,22 @@ public class TheSnap : MonoBehaviour {
 
     IEnumerator ShowText()
     {
-        Debug.Log("show text");
+        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
+        colorText.GetComponent<MeshRenderer>().enabled = true;
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         ScoreText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
         ScoreText.text = "Equalised, as all things could be";
-        Debug.Log("before coroutine");
         yield return new WaitForSeconds(1f);
-        Debug.Log("after coroutine");
-        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
         colorText.GetComponent<MeshRenderer>().enabled = true;
-        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
-        Debug.Log(colorText.color);
         while (colorText.color.a > 0.0f)
         {
             Debug.Log("we here");
             colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.08f);
             yield return null;
         }
+        colorText.GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject);
+
     }
 }
