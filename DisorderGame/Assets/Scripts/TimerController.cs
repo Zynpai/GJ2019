@@ -42,6 +42,12 @@ public class TimerController : MonoBehaviour {
         if (sec < 10)
         {
             TimerText.text = min + ":0" + sec;
+            if (min == 0)
+            {
+                GameObject easter = GameObject.Find("Easter");
+                Destroy(easter);
+            
+            }
         }
         else
         {
