@@ -12,7 +12,6 @@ public class TheSnap : MonoBehaviour {
     int Decider = 0;
     public int FlickRate = 3;
     int count = 0;
-    int listcounter = 0;
     public float fadetime = 100f;
     GameObject[] List = new GameObject[50];
     GameObject[] FilteredList = new GameObject[50];
@@ -39,7 +38,6 @@ public class TheSnap : MonoBehaviour {
             List = GameObject.FindGameObjectsWithTag("Object");
             Debug.Log("before first foreach");
             count = 0;
-            listcounter = 0;
             foreach (GameObject g in List)
             {
                 if (g.GetComponent<ObjectTrashed>().isTrash == true)
@@ -66,7 +64,6 @@ public class TheSnap : MonoBehaviour {
         {
             List = GameObject.FindGameObjectsWithTag("Object");
             count = 0;
-            listcounter = 0;
             foreach (GameObject g in List)
             {
                 if (g.GetComponent<ObjectTrashed>().isTrash == false)

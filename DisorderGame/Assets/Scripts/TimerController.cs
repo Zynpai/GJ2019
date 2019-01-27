@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class TimerController : MonoBehaviour {
 
     public Text TimerText;
-    public int min;
-    public int sec;
+    public static int min;
+    public static int sec;
     public static float percent;
     public static bool trasher;
     // Use this for initialization
