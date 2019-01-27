@@ -80,5 +80,6 @@ public class SpeedUpgrade : MonoBehaviour
         }
         colorText.GetComponent<MeshRenderer>().enabled = false;
         colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
+        Destroy(gameObject);
     }
 }

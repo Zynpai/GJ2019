@@ -12,15 +12,18 @@ public class ScoreMultiplier : MonoBehaviour {
     public float fadetime = 100f;
     public GameObject speed;
     bool Score;
+    TextMeshPro colorText;
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Score = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+
+    }
+        // Update is called once per frame
+        void Update () {
 		
 	}
 
@@ -67,23 +70,21 @@ public class ScoreMultiplier : MonoBehaviour {
 
     IEnumerator ShowText()
     {
-        Debug.Log("show text");
+        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
+        colorText.GetComponent<MeshRenderer>().enabled = true;
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         ScoreText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
         ScoreText.text = "Double Score";
-        Debug.Log("before coroutine");
         yield return new WaitForSeconds(1f);
-        Debug.Log("after coroutine");
-        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
         colorText.GetComponent<MeshRenderer>().enabled = true;
-        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
-        Debug.Log(colorText.color);
         while (colorText.color.a > 0.0f)
         {
             Debug.Log("we here");
             colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.08f);
             yield return null;
         }
+        colorText.GetComponent<MeshRenderer>().enabled = false;
 
     }
 }
