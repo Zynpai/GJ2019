@@ -32,7 +32,7 @@ public class CleanInteraction : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (Input.GetKeyDown("enter"))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 1, layerMask);
 

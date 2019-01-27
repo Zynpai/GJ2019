@@ -24,16 +24,16 @@ public class PlayerMovement2 : MonoBehaviour
     }
 
     void Update()
-    {
-
-        horizontal = Input.GetAxisRaw("Horizontal2");
-        vertical = Input.GetAxisRaw("Vertical2");
-        Vector3 pos = transform.position;
+    {       
 
     }
 
     void FixedUpdate()
     {
+
+        horizontal = Input.GetAxisRaw("Horizontal2");
+        vertical = Input.GetAxisRaw("Vertical2");
+        Vector3 pos = transform.position;
 
         if (InGame == false)
         {
