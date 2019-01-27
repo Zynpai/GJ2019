@@ -10,6 +10,7 @@ public class TheSnap : MonoBehaviour {
     string colname;
     public TMP_Text ScoreText;
     int Decider = 0;
+    public int FlickRate = 3;
     int count = 0;
     int listcounter = 0;
     public float fadetime = 100f;
@@ -31,6 +32,7 @@ public class TheSnap : MonoBehaviour {
     {
         StartCoroutine(ShowText());
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        
         if (col.CompareTag("PlayerTrash"))
         {
             Debug.Log("trash");
@@ -49,18 +51,15 @@ public class TheSnap : MonoBehaviour {
             Debug.Log("before second foreach");
             foreach (GameObject g in FilteredList)
             {
-                int Decider = Random.Range(1, 4);
-                if (Decider == 1)
+                Decider = Decider + 1;
+                if (Decider%FlickRate == 0)
                 {
-                    Debug.Log("snapping something....?");
+                    
                     g.GetComponent<ObjectTrashed>().isClean = true;
                     g.GetComponent<ObjectTrashed>().isTrash = false;
-                    listcounter += 1;
+                    
                 }
-                if(Mathf.Round(listcounter/2) >= FilteredList.Length)
-                {
-                    break;
-                }
+                
             }
         }
         if (col.CompareTag("PlayerClean"))
@@ -78,17 +77,13 @@ public class TheSnap : MonoBehaviour {
             }
             foreach (GameObject g in FilteredList)
             {
-               Decider =  Random.Range(1, 4);
-                if (Decider == 1)
+                Decider = Decider + 1;
+                if (Decider % FlickRate == 0)
                 {
                     g.GetComponent<ObjectTrashed>().isClean = false;
                     g.GetComponent<ObjectTrashed>().isTrash = true;
-                    listcounter += 1;
                 }
-                if (Mathf.Round(listcounter / 2) >= FilteredList.Length)
-                {
-                    break;
-                }
+                
             }
 
         }

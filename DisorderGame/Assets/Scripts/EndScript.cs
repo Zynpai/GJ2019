@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,14 +14,18 @@ public class EndScript : MonoBehaviour {
     void Start () {
 
         percent = TimerController.percent * 100f;
+        Debug.Log(percent);
         trasher = TimerController.trasher;
+        decimal Dec = (decimal)percent;
+        Debug.Log(Dec);
+        Dec = Math.Round(Dec, 2);
         if (trasher)
         {
-            EndText.text = percent.ToString() + "% Room Trashed at end!";
+            EndText.text = Dec.ToString() + "% Room Trashed at end!";
         }
         else
         {
-            EndText.text = percent.ToString() + "% Room Cleaned at end!";
+            EndText.text = Dec.ToString() + "% Room Cleaned at end!";
         }
 
 

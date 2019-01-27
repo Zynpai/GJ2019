@@ -63,24 +63,27 @@ public class TimerController : MonoBehaviour {
     float CalcPercent()
     {
         GameObject[] List = new GameObject[50];
-        int trash = 0;
-        int clean = 0;
+        float trash = 0.0f;
+        float clean = 0.0f;
         
         List = GameObject.FindGameObjectsWithTag("Object");
         foreach (GameObject g in List)
         {
             if (g.GetComponent<ObjectTrashed>().isTrash == true)
             {
-                trash = trash + 1;
+                trash = trash + 1.0f;
+                Debug.Log(trash);
             }
             else
             {
-                clean = clean + 1;
+                clean = clean + 1.0f;
+                Debug.Log(clean);
             }
 
         }
         if (clean > trash)
         {
+            
             percent = clean / List.Length;
             trasher = false;
         }
@@ -89,7 +92,9 @@ public class TimerController : MonoBehaviour {
             percent = trash / List.Length;
             trasher = true;
         }
+        Debug.Log(percent);
         return percent;
+        
     
     }
 
