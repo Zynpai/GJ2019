@@ -8,6 +8,7 @@ public class SpawnPower : MonoBehaviour {
     public GameObject Points;
     public GameObject Bar;
     public GameObject Snap;
+    public static int Rate = 25;
 
     Vector3[] positionArray = new[]
     {
@@ -63,7 +64,12 @@ public class SpawnPower : MonoBehaviour {
     
     IEnumerator SpawnStuff()
     {
-        float ranNum = Random.Range(1, 5);
+        int Ratemin = Rate - 15;
+        if (Ratemin <= 0)
+        {
+            Ratemin = 1;
+        }
+        float ranNum = Random.Range(Ratemin, Rate);
         yield return new WaitForSeconds(ranNum);
         Debug.Log("Before Spawn");
         SpawnRandom();
