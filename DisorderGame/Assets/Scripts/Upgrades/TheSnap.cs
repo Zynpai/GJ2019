@@ -13,8 +13,8 @@ public class TheSnap : MonoBehaviour {
     int count = 0;
     int listcounter = 0;
     public float fadetime = 100f;
-    public GameObject[] List;
-    public GameObject[] FilteredList;
+    GameObject[] List = new GameObject[50];
+    GameObject[] FilteredList = new GameObject[50];
     TextMeshPro colorText;
 
     // Use this for initialization
@@ -49,7 +49,7 @@ public class TheSnap : MonoBehaviour {
             Debug.Log("before second foreach");
             foreach (GameObject g in FilteredList)
             {
-                int Decider = Random.Range(0, 3);
+                int Decider = Random.Range(1, 3);
                 if (Decider == 1)
                 {
                     Debug.Log("snapping something....?");
@@ -57,7 +57,7 @@ public class TheSnap : MonoBehaviour {
                     g.GetComponent<ObjectTrashed>().isTrash = false;
                     listcounter += 1;
                 }
-                if(Mathf.Floor(listcounter/3) >= FilteredList.Length)
+                if(Mathf.Round(listcounter/2) >= FilteredList.Length)
                 {
                     break;
                 }
@@ -65,31 +65,25 @@ public class TheSnap : MonoBehaviour {
         }
         if (col.CompareTag("PlayerClean"))
         {
-            Debug.Log("CleanSnap");
             List = GameObject.FindGameObjectsWithTag("Object");
             count = 0;
             listcounter = 0;
             foreach (GameObject g in List)
             {
-                if (g.layer == 8)
+                if (g.GetComponent<ObjectTrashed>().isTrash == false)
                 {
                     FilteredList[count] = g;
-                    count += 1;
-                    Debug.Log(count);
+                    count += 0;
                 }
             }
             foreach (GameObject g in FilteredList)
             {
-               Decider =  Random.Range(0, 3);
+               Decider =  Random.Range(1, 3);
                 if (Decider == 1)
                 {
-                    try
-                    {
-                        g.GetComponent<ObjectTrashed>().isClean = false;
-                        g.GetComponent<ObjectTrashed>().isTrash = true;
-                        listcounter += 1;
-                    }
-                    catch { }
+                    g.GetComponent<ObjectTrashed>().isClean = false;
+                    g.GetComponent<ObjectTrashed>().isTrash = true;
+                    listcounter += 1;
                 }
                 if (Mathf.Round(listcounter / 2) >= FilteredList.Length)
                 {
