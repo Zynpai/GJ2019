@@ -18,6 +18,7 @@ public class SpeedUpgrade : MonoBehaviour
     void Start()
     {
        colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
+        speedy = false;
     }
 
     // Update is called once per frame
@@ -35,14 +36,15 @@ public class SpeedUpgrade : MonoBehaviour
             if (col.CompareTag("PlayerTrash"))
         {
             colname = "Trasher";
-            col.GetComponent<PlayerMovement1>().runSpeed = col.GetComponent<PlayerMovement1>().runSpeed * 2;
+                col.GetComponent<PlayerMovement1>().runSpeed = col.GetComponent<PlayerMovement1>().runSpeed + 4;
             StartCoroutine(ShowText());
         }
         if (col.CompareTag("PlayerClean"))
         {
             colname = "Cleaner";
-            col.GetComponent<PlayerMovement2>().runSpeed = col.GetComponent<PlayerMovement2>().runSpeed * 2;
+            col.GetComponent<PlayerMovement2>().runSpeed = col.GetComponent<PlayerMovement2>().runSpeed + 4;
             StartCoroutine(ShowText());
+                Debug.Log("Pick Up");
         }
         speedy = true;
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -55,28 +57,24 @@ public class SpeedUpgrade : MonoBehaviour
         yield return new WaitForSeconds(20);
         if (colname == "Cleaner")
         {
-            GameObject.Find("PlayerClean").GetComponent<PlayerMovement2>().runSpeed = GameObject.Find("PlayerClean").GetComponent<PlayerMovement2>().runSpeed / 2;
+            GameObject.Find("PlayerClean").GetComponent<PlayerMovement2>().runSpeed = GameObject.Find("PlayerClean").GetComponent<PlayerMovement2>().runSpeed -4;
         }
         if(colname == "Trasher")
         {
-            GameObject.Find("PlayerTrash").GetComponent<PlayerMovement1>().runSpeed = GameObject.Find("PlayerTrash").GetComponent<PlayerMovement1>().runSpeed / 2;
+            GameObject.Find("PlayerTrash").GetComponent<PlayerMovement1>().runSpeed = GameObject.Find("PlayerTrash").GetComponent<PlayerMovement1>().runSpeed -4;
         }
     }
 
     IEnumerator ShowText()
     {
+        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
+        colorText.GetComponent<MeshRenderer>().enabled = true;
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         speedText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
-        speedText.text = "Speed Boost2";
-        Debug.Log("before coroutine");
+        speedText.text = "Speed Boost";
         yield return new WaitForSeconds(1f);
-        Debug.Log("after coroutine");
-        TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
-        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
-        Debug.Log(colorText.color);
         while(colorText.color.a > 0.0f)
         {
-            Debug.Log("we here");
             colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.008f);
             yield return null;
         }
