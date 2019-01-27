@@ -7,6 +7,7 @@ public class SpawnPower : MonoBehaviour {
     public GameObject Speed;
     public GameObject Points;
     public GameObject Bar;
+    public GameObject Snap;
 
     Vector3[] positionArray = new[]
     {
@@ -42,6 +43,7 @@ public class SpawnPower : MonoBehaviour {
         "Speed",
        "Points",
        "Bar",
+       "Snap",
 
     };
    
@@ -61,7 +63,7 @@ public class SpawnPower : MonoBehaviour {
     
     IEnumerator SpawnStuff()
     {
-        float ranNum = Random.Range(1f, 5f);
+        float ranNum = Random.Range(1, 5);
         yield return new WaitForSeconds(ranNum);
         Debug.Log("Before Spawn");
         SpawnRandom();
@@ -70,8 +72,8 @@ public class SpawnPower : MonoBehaviour {
     void SpawnRandom()
     {
         Debug.Log("On Spawn");
-        int ranPos = Random.Range(0, 24);
-        string ranPow = powerArray[Random.Range(0, 2)];
+        int ranPos = Random.Range(0, 25);
+        string ranPow = powerArray[Random.Range(0, 4)];
         if(ranPow == "Speed")
         {
             Instantiate(Speed, positionArray[ranPos], Quaternion.identity);
@@ -83,6 +85,10 @@ public class SpawnPower : MonoBehaviour {
         else if (ranPow == "Bar")
         {
             Instantiate(Bar, positionArray[ranPos], Quaternion.identity);
+        }
+        else if(ranPow == "Snap")
+        {
+            Instantiate(Snap, positionArray[ranPos], Quaternion.identity);
         }
 
         StartCoroutine(SpawnStuff());

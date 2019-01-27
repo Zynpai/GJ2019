@@ -12,10 +12,11 @@ public class BarDifficulty : MonoBehaviour
     public float fadetime = 100f;
     public GameObject speed;
     bool difficult;
+    TextMeshPro colorText;
     // Use this for initialization
     void Start()
     {
-        difficult = false;
+        colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
@@ -30,6 +31,8 @@ public class BarDifficulty : MonoBehaviour
     {
         if (difficult == false)
         {
+            colorText.GetComponent<MeshRenderer>().enabled = true;
+            colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
             if (col.CompareTag("PlayerTrash"))
             {
                 Debug.Log("trash");
@@ -70,7 +73,6 @@ public class BarDifficulty : MonoBehaviour
 
     IEnumerator ShowText()
     {
-        Debug.Log("show text");
         GameObject.Find("PowerUp").transform.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         diffText = GameObject.Find("PowerUp").GetComponent<TMP_Text>();
         diffText.text = "Bar Difficulty";
@@ -79,14 +81,12 @@ public class BarDifficulty : MonoBehaviour
         Debug.Log("after coroutine");
         TextMeshPro colorText = GameObject.Find("PowerUp").GetComponent<TextMeshPro>();
         colorText.GetComponent<MeshRenderer>().enabled = true;
-        colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, 1);
-        Debug.Log(colorText.color);
         while (colorText.color.a > 0.0f)
         {
-            Debug.Log("we here");
             colorText.color = new Color(colorText.color.r, colorText.color.g, colorText.color.b, colorText.color.a - 0.08f);
             yield return null;
         }
+        colorText.GetComponent<MeshRenderer>().enabled = false;
 
     }
 }
