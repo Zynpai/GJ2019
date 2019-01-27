@@ -12,7 +12,7 @@ public class TrashInteraction : MonoBehaviour {
     string hitname;
     int Scorescale;
     public int Scoremult = 1;
-    private int Score;
+    public static int Score;
     public Text Trashscore;
     
     [SerializeField] private BarMoveTrash barTrash;

@@ -13,7 +13,7 @@ public class CleanInteraction : MonoBehaviour
     string hitname;
     int Scorescale;
     public int Scoremult = 1;
-    private int Score;
+    public static int Score;
     public Text Cleanertext;
     [SerializeField] private BarMoveClean barClean;
 
