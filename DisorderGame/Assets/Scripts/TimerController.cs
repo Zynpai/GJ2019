@@ -9,9 +9,10 @@ public class TimerController : MonoBehaviour {
     public Text TimerText;
     public int min;
     public int sec;
-
-	// Use this for initialization
-	void Start () {
+    public static float percent;
+    public static bool trasher;
+    // Use this for initialization
+    void Start () {
         TextUpdate();
 	}
 	
@@ -21,6 +22,7 @@ public class TimerController : MonoBehaviour {
         {
             if (sec == 0 && min == 0)
             {
+                CalcPercent();
                 Time.timeScale = 0;
                 SceneManager.LoadScene("EndScreen");
             }
@@ -55,6 +57,40 @@ public class TimerController : MonoBehaviour {
         {
             TimerText.text = min + ":" + sec;
         }
+    }
+
+
+    void CalcPercent()
+    {
+        GameObject[] List = new GameObject[50];
+        int trash = 0;
+        int clean = 0;
+        
+        List = GameObject.FindGameObjectsWithTag("Object");
+        foreach (GameObject g in List)
+        {
+            if (g.GetComponent<ObjectTrashed>().isTrash == true)
+            {
+                trash = trash + 1;
+            }
+            else
+            {
+                clean = clean + 1;
+            }
+
+        }
+        if (clean > trash)
+        {
+            percent = clean / List.Length;
+            trasher = false;
+        }
+        else
+        {
+            percent = trash / List.Length;
+            trasher = true;
+        }
+       
+    
     }
 
 
