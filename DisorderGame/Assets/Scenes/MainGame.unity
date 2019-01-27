@@ -5576,6 +5576,7 @@ MonoBehaviour:
   Points: {fileID: 1921723090451684, guid: c0d8947f0d3a4304f9cc2e6896e5bd70, type: 2}
   Bar: {fileID: 1931862842929350, guid: 35e170d2ce30cdb44bb4b29bf2883061, type: 2}
   Snap: {fileID: 1081249750725756, guid: 1bc0bf64073e94c4b84e98bb560aa88a, type: 2}
+  Rate: 0
 --- !u!1 &1112255597
 GameObject:
   m_ObjectHideFlags: 0
@@ -8041,6 +8042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 75688173}
+  min: 0
+  sec: 0
 --- !u!81 &1855000799
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9120,8 +9123,13 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 310d29184d6b58b4e9ddaa6ea934a864,
+      objectReference: {fileID: 21300000, guid: 41cba2acc3481f94fb759841831ff81f,
         type: 3}
+    - target: {fileID: 212320411804720514, guid: 524f089255f69804da9930bfc87c8d77,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 524f089255f69804da9930bfc87c8d77, type: 2}
   m_IsPrefabAsset: 0
