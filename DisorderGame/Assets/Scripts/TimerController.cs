@@ -22,7 +22,7 @@ public class TimerController : MonoBehaviour {
         {
             if (sec == 0 && min == 0)
             {
-                CalcPercent();
+                percent = CalcPercent();
                 Time.timeScale = 0;
                 SceneManager.LoadScene("EndScreen");
             }
@@ -60,7 +60,7 @@ public class TimerController : MonoBehaviour {
     }
 
 
-    void CalcPercent()
+    float CalcPercent()
     {
         GameObject[] List = new GameObject[50];
         int trash = 0;
@@ -89,7 +89,7 @@ public class TimerController : MonoBehaviour {
             percent = trash / List.Length;
             trasher = true;
         }
-       
+        return percent;
     
     }
 
